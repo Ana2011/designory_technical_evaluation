@@ -1,8 +1,16 @@
 module.exports = {
-    "Verifing Designory page": function(browser){
+    beforeEach: function(browser){
         browser.page
             .degignoryPage()
             .navigate()
-            .assert.titleEquals("Full Service Advertising Agency | Designory");
+    },
+    
+    after: function(browser) {
+        browser.end()
+    },
+
+    "Verifing Designory page": function(browser){
+        browser.assert.titleEquals("Full Service Advertising Agency | Designory");
     }
+
 }
