@@ -1,9 +1,10 @@
 module.exports = {
     url: 'https://www.designory.com/',
     elements: {
-        navigator: {
-            selector: '#nav-toggle'
-        }
+        navigator: '#nav-toggle',
+        cookieContainer: '#cookie-container',
+        buttonGot: "button.cookie-button",
+        buttonX: "button.cookie-x-button"
     },
     commands: [{
         checkPage(pageName) {
@@ -34,5 +35,29 @@ module.exports = {
                 .assert.textEquals("nav>ul>li:nth-child(6)", "NEWS")
         },
 
+        checkCookieGot() {
+            return this
+                .navigate()
+                .waitForElementVisible('@cookieContainer')
+                .click('@buttonGot')
+                .navigate()
+        },
+
+        checkCookieX() {
+            return this
+                .navigate()
+                .waitForElementVisible('@cookieContainer')
+                .click('@buttonX')
+                .navigate()
+        },
+
+        checkCookieClean() {
+            return this
+                .navigate()
+                .waitForElementVisible('@cookieContainer')
+                .click('@buttonGot')
+                .deleteCookies(function() {})
+                .navigate()
+        },
     }]
 }
