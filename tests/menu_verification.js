@@ -1,8 +1,13 @@
 module.exports = {
+
     beforeEach: function(browser){
-        browser.page
-            .degignoryPage()
+        browser.page.degignoryPage()
             .navigate()
+    },
+
+    afterEach : function(browser) {
+        browser.page.degignoryPage()
+            .checkMenu()
     },
 
     after: function(browser) {
@@ -34,9 +39,12 @@ module.exports = {
             .assert.titleEquals("Careers | Designory");
     },
 
-    // "Verifying Locations": function(browser){
-    //     // TO CHECK WHAT OT DO
-    // },
+    "Verifying Locations": function(browser){
+        browser.page.degignoryPage()
+            .checkPageLocation()
+            .assert.urlContains("location")
+            .assert.titleEquals("Long Beach Advertising Agency | Designory");
+    },
 
     "Verifying Contact": function(browser){
         browser.page.degignoryPage()
