@@ -4,7 +4,10 @@ module.exports = {
         navigator: '#nav-toggle',
         cookieContainer: '#cookie-container',
         buttonGot: "button.cookie-button",
-        buttonX: "button.cookie-x-button"
+        buttonX: "button.cookie-x-button",
+        locationH1: "h1",
+        locationPhone: "div:nth-of-type(2) > .side-section.spacing-right > p",
+        locationImg: "div>a>img"
     },
     commands: [{
         checkPage(pageName) {
@@ -20,6 +23,14 @@ module.exports = {
                 .click("@navigator")
                 .click(`li>a[href="#"]`)
                 .click(`li>a[href="/locations/long-beach"]`)
+        },
+
+        checkPageLocationChicago() {
+            return this
+                .waitForElementVisible("@navigator")
+                .click("@navigator")
+                .click(`li>a[href="#"]`)
+                .click(`li>a[href="/locations/chicago"]`)
         },
 
         checkMenu() {
